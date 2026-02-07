@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-server-deployment
+  namespace: spring-microservice-ns
+  labels:
+    app: user-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-server
+  template:
+    metadata:
+      labels:
+        app: user-server
+    spec:
+      containers:
+        - name: user-server
+          image: diman567/user-server:0.0.1
+          ports:
+            - containerPort: 8070
+          envFrom:
+            - configMapRef:
+                name: global-config-map
+            - configMapRef:
+                name: user-server-config-map
+            - secretRef:
+                name: infrastructure-mongo-secrets
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-server-service
+  namespace: spring-microservice-ns
+spec:
+  type: ClusterIP
+  selector:
+    app: user-server
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8070
+

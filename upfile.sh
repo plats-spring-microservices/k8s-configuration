@@ -20,6 +20,12 @@ kubectl apply -f servers/config-server.yaml
 
 sleep 3
 
+# user-server
+kubectl apply -f config-map/user-server-cm.yaml
+kubectl apply -f servers/user-server.yaml
+
+sleep 3
+
 # gateway-server
 kubectl apply -f config-map/gateway-server-cm.yaml
 kubectl apply -f servers/gateway-server.yaml

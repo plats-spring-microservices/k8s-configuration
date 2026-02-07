@@ -1,13 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: gateway-server-config-map
+  name: user-server-config-map
   namespace: spring-microservice-ns
 data:
   SPRING_CONFIG_IMPORT: configserver:http://config-server-service:80/
   SPRING_CLOUD_CONFIG_IMPORT: http://config-server-service:80/
-  SERVER_PORT: "8080"
-  SPRING_APPLICATION_NAME: gateway-server
-
-  # data for mapping
-  SPRING_CLOUD_GATEWAY_ROUTES_USER_SERVER: http://user-server-service:80/
+  SERVER_PORT: "8070"
+  SPRING_APPLICATION_NAME: user-server
