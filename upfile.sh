@@ -6,6 +6,10 @@ kubectl delete namespaces spring-microservice-ns > /dev/null
 kubectl apply -f namespace/global-ns.yaml
 kubectl apply -f config-map/global-cm.yaml
 
+# infrastructure
+kubectl apply -f secrets/infrastructure-mongo-secrets.yaml
+kubectl apply -f infrastructure/infrastructure-mongo.yaml
+
 # extra functional for testing
 kubectl apply -f test/pod.yaml
 
