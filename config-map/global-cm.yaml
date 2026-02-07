@@ -4,6 +4,6 @@ metadata:
   name: global-config-map
   namespace: spring-microservice-ns
 data:
-  EUREKA_INSTANCE_HOSTNAME: "discovery-server-service.spring-microservice-ns"
-  EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: "http://discovery-server-service.spring-microservice-ns:8761/eureka/"
+  EUREKA_INSTANCE_HOSTNAME: "discovery-server-service"
+  EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: "http://discovery-server-service:8761/eureka/"
   SPRING_PROFILES_ACTIVE: ""

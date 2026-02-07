@@ -1,44 +1,42 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: config-server-deployment
+  name: gateway-server-deployment
   namespace: spring-microservice-ns
   labels:
-    app: config-server
+    app: gateway-server
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: config-server
+      app: gateway-server
   template:
     metadata:
       labels:
-        app: config-server
+        app: gateway-server
     spec:
       containers:
-        - name: config-server
-          image: diman567/config-server:0.0.2
+        - name: gateway-server
+          image: diman567/gateway-server:0.0.1
           ports:
-            - containerPort: 8888
+            - containerPort: 8080
           envFrom:
             - configMapRef:
                 name: global-config-map
             - configMapRef:
-                name: config-server-config-map
-            - secretRef:
-                name: config-server-secrets
+                name: gateway-server-config-map
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: config-server-service
+  name: gateway-server-service
   namespace: spring-microservice-ns
 spec:
   type: ClusterIP
   selector:
-    app: config-server
+    app: gateway-server
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8888
+      targetPort: 8080
 
