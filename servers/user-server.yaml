@@ -28,6 +28,8 @@ spec:
                 name: user-server-config-map
             - secretRef:
                 name: infrastructure-mongo-secrets
+            - secretRef:
+                name: infrastructure-rabbit-secrets
 ---
 apiVersion: v1
 kind: Service
