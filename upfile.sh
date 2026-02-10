@@ -9,6 +9,8 @@ kubectl apply -f config-map/global-cm.yaml
 # infrastructure
 kubectl apply -f secrets/infrastructure-mongo-secrets.yaml
 kubectl apply -f infrastructure/infrastructure-mongo.yaml
+kubectl apply -f secrets/infrastructure-rabbit-secrets.yaml
+kubectl apply -f infrastructure/infrastructure-rabbit.yaml
 
 # extra functional for testing
 kubectl apply -f test/pod.yaml
