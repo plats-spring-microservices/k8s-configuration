@@ -18,6 +18,7 @@ spec:
       containers:
         - name: gateway-server
           image: diman567/gateway-server:0.0.1
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           envFrom:

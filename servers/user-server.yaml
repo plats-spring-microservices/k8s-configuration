@@ -17,7 +17,8 @@ spec:
     spec:
       containers:
         - name: user-server
-          image: diman567/user-server:0.0.1
+          image: diman567/user-server:0.0.3
+          imagePullPolicy: Always
           ports:
             - containerPort: 8070
           envFrom:

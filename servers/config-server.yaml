@@ -18,6 +18,7 @@ spec:
       containers:
         - name: config-server
           image: diman567/config-server:0.0.2
+          imagePullPolicy: Always
           ports:
             - containerPort: 8888
           envFrom:
