@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: infrastructure-mongo-deployment
+  name: infrastructure-mongo-auth-deployment
   namespace: spring-microservice-ns
   labels:
-    app: infrastructure-mongo
+    app: infrastructure-mongo-auth
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: infrastructure-mongo
+      app: infrastructure-mongo-auth
   template:
     metadata:
       labels:
-        app: infrastructure-mongo
+        app: infrastructure-mongo-auth
     spec:
       containers:
         - image: mongo:latest
@@ -23,12 +23,12 @@ spec:
             - name: MONGO_INITDB_ROOT_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: infrastructure-mongo-secrets
+                  name: infrastructure-mongo-auth-secrets
                   key: MONGO_USERNAME
             - name: MONGO_INITDB_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: infrastructure-mongo-secrets
+                  name: infrastructure-mongo-auth-secrets
                   key: MONGO_PASSWORD
           volumeMounts:
             - name: mongodb-data
@@ -38,18 +38,18 @@ spec:
       volumes:
         - name: mongodb-data
           hostPath:
-            path: /data/mongodb
+            path: /data/auth/mongodb
             type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: infrastructure-mongo-service
+  name: infrastructure-mongo-auth-service
   namespace: spring-microservice-ns
 spec:
   type: ClusterIP
   selector:
-    app: infrastructure-mongo
+    app: infrastructure-mongo-auth
   ports:
     - protocol: TCP
       port: 80

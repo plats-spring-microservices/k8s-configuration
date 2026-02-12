@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-server-config-map
+  namespace: spring-microservice-ns
+data:
+  SPRING_CONFIG_IMPORT: configserver:http://config-server-service:80/
+  SPRING_CLOUD_CONFIG_IMPORT: http://config-server-service:80/
+  SERVER_PORT: "8060"
+  SPRING_APPLICATION_NAME: auth-server

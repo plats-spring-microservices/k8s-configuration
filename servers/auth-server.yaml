@@ -1,45 +1,45 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-server-deployment
+  name: auth-server-deployment
   namespace: spring-microservice-ns
   labels:
-    app: user-server
+    app: auth-server
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: user-server
+      app: auth-server
   template:
     metadata:
       labels:
-        app: user-server
+        app: auth-server
     spec:
       containers:
-        - name: user-server
-          image: diman567/user-server:0.0.4
+        - name: auth-server
+          image: diman567/auth-server:0.0.1
           imagePullPolicy: Always
           ports:
-            - containerPort: 8070
+            - containerPort: 8060
           envFrom:
             - configMapRef:
                 name: global-config-map
             - configMapRef:
-                name: user-server-config-map
+                name: auth-server-config-map
             - secretRef:
-                name: infrastructure-mongo-users-secrets
+                name: infrastructure-mongo-auth-secrets
             - secretRef:
                 name: infrastructure-rabbit-secrets
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: user-server-service
+  name: auth-server-service
   namespace: spring-microservice-ns
 spec:
   type: ClusterIP
   selector:
-    app: user-server
+    app: auth-server
   ports:
     - protocol: TCP
       port: 80

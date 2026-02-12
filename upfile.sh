@@ -7,10 +7,12 @@ kubectl apply -f namespace/global-ns.yaml
 kubectl apply -f config-map/global-cm.yaml
 
 # infrastructure
-kubectl apply -f secrets/infrastructure-mongo-secrets.yaml
-kubectl apply -f infrastructure/infrastructure-mongo.yaml
+kubectl apply -f secrets/infrastructure-mongo-users-secrets.yaml
+kubectl apply -f infrastructure/infrastructure-mongo-users.yaml
 kubectl apply -f secrets/infrastructure-rabbit-secrets.yaml
 kubectl apply -f infrastructure/infrastructure-rabbit.yaml
+kubectl apply -f secrets/infrastructure-mongo-auth-secrets.yaml
+kubectl apply -f infrastructure/infrastructure-mongo-auth.yaml
 
 # extra functional for testing
 kubectl apply -f test/pod.yaml
@@ -25,6 +27,10 @@ sleep 3
 # user-server
 kubectl apply -f config-map/user-server-cm.yaml
 kubectl apply -f servers/user-server.yaml
+
+# auth-server
+kubectl apply -f config-map/auth-server-cm.yaml
+kubectl apply -f servers/auth-server.yaml
 
 sleep 3
 
