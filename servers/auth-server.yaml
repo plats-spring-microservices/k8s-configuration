@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: auth-server
-          image: diman567/auth-server:0.0.1
+          image: diman567/auth-server:0.0.2
           imagePullPolicy: Always
           ports:
             - containerPort: 8060
@@ -30,6 +30,8 @@ spec:
                 name: infrastructure-mongo-auth-secrets
             - secretRef:
                 name: infrastructure-rabbit-secrets
+            - secretRef:
+                name: auth-server-secrets
 ---
 apiVersion: v1
 kind: Service
@@ -43,5 +45,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8070
+      targetPort: 8060
 

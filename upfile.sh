@@ -30,6 +30,7 @@ kubectl apply -f servers/user-server.yaml
 
 # auth-server
 kubectl apply -f config-map/auth-server-cm.yaml
+kubectl apply -f secrets/auth-server-secrets.yaml
 kubectl apply -f servers/auth-server.yaml
 
 sleep 3

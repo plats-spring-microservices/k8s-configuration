@@ -11,3 +11,4 @@ data:
 
   # data for mapping
   SPRING_CLOUD_GATEWAY_ROUTES_USER_SERVER: http://user-server-service:80/
+  SPRING_CLOUD_GATEWAY_ROUTES_AUTH_SERVER: http://auth-server-service:80/
