@@ -1,6 +1,6 @@
 #!/bin/bash
 # restart
-kubectl delete namespaces spring-microservice-ns > /dev/null
+kubectl delete namespace spring-microservice-ns --force --grace-period=0
 
 # global things
 kubectl apply -f namespace/global-ns.yaml

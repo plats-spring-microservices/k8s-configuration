@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: auth-server
-          image: diman567/auth-server:0.0.2
+          image: diman567/auth-server:0.0.3
           imagePullPolicy: Always
           ports:
             - containerPort: 8060
